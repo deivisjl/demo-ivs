@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Iniciar sesión";
+}
+<div class="login-page" style="height:85vh; background:inherit;">
+    <div class="login-box">
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Ingresar credenciales</p>
+
+                <form action="~/Login/Create" method="post" autocomplete="off">
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" name="Correo" placeholder="Usuario" autofocus>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" name="Password" placeholder="Contraseña">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center mb-3">
+                                <button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- /.social-auth-links -->
+
+                <p class="mb-1">
+                    <a href="#">Olvidó su contraseña?</a>
+                </p>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+</div>
+

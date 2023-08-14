@@ -1,0 +1,92 @@
+﻿@using Microsoft.AspNetCore.Identity
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"] - GestionEmpleado</title>
+    <link href="~/css/adminlte.min.css" rel="stylesheet" />
+    <link href="~/font/all.min.css" rel="stylesheet" />
+    @*<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">*@
+</head>
+<body class="hold-transition layout-top-nav text-sm">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white sticky-top">
+            <div class="container-fluid">
+                <a href="~/" class="navbar-brand">
+                    <img src="~/img/AdminLTELogo.png" alt="IGSS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <span class="brand-text font-weight-light">Gestión del empleado</span>
+                </a>
+
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <li class="nav-item">
+                                <a href="~/" class="nav-link">Configuraciones</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Datos del empleado</a>
+                                <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                                    <li><a href="#" class="dropdown-item">Some action </a></li>
+                                    <li><a href="#" class="dropdown-item">Some other action</a></li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+                <!-- Right navbar links -->
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                        <li class="nav-item dropdown">
+                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">@User.Identity.Name</a>
+                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="right:0;left:auto">
+                                <li><a href="#" class="dropdown-item">Configuración </a></li>
+                                <li><a href="~/Login/Logout" class="dropdown-item">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="background: #e9ecef">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="pt-2"></div>
+                    @RenderBody()
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="float-right d-none d-sm-inline">IGSSGT</div>
+            <!-- Default to the left -->
+            <strong>Gestión del empleado 2023</strong>
+        </footer>
+    </div>
+    <!-- ./wrapper -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/adminlte.min.js"></script>
+    <script src="~/js/scripts.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
