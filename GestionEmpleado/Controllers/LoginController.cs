@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace GestionEmpleado.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : ControllerBase
     {
         [AllowAnonymous]
         // GET: LoginController
@@ -28,7 +28,7 @@ namespace GestionEmpleado.Controllers
         }
 
         // POST: LoginController/Create
-        [HttpPost]
+        [HttpPost("/Login")]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
         public async Task<ActionResult> Create(Usuario usuarioLogin)
@@ -40,6 +40,8 @@ namespace GestionEmpleado.Controllers
             {
                 if (!ModelState.IsValid)
                 {
+                    this.SetFlash(Comun.FlashMessageType.Danger, "Ocurrió un error al autenticar el usuario");
+
                     return View("Index",usuarioLogin);
                 }
 

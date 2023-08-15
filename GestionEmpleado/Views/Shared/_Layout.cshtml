@@ -13,28 +13,31 @@
 </head>
 <body class="hold-transition layout-top-nav text-sm" id="main-page">
     <div class="wrapper">
-        @{ 
+        @{
             await Html.RenderPartialAsync("_MenuTop");
         }
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper" style="background: #e9ecef">
-                <!-- Main content -->
-                <div class="content">
-                    <div class="container-fluid">
-                        <div class="pt-2"></div>
-                        @RenderBody()
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content -->
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="background: #e9ecef">
+            <!-- Main content -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="pt-2"></div>
+                    @{
+                        await Html.RenderPartialAsync("_FlashMessages");
+                    }
+                    @RenderBody()
+                </div><!-- /.container-fluid -->
             </div>
-            <!-- /.content-wrapper -->
-            <!-- Main Footer -->
-            <footer class="main-footer" style="background: url('/img/murales.png') repeat; display:inline-block; width:100%;">
-                <!-- To the right -->
-                <div class="float-right d-none d-sm-inline">IGSSGT</div>
-                <!-- Default to the left -->
-                <strong>Gestión del empleado @DateTime.Now.Year</strong>
-            </footer>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        <footer class="main-footer" style="background: url('/img/murales.png') repeat; display:inline-block; width:100%;">
+            <!-- To the right -->
+            <div class="float-right d-none d-sm-inline">IGSSGT</div>
+            <!-- Default to the left -->
+            <strong>Gestión del empleado @DateTime.Now.Year</strong>
+        </footer>
     </div>
     <!-- ./wrapper -->
     <script src="~/js/jquery.min.js"></script>
