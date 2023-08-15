@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using GestionEmpleado.Models;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -36,6 +38,11 @@ namespace GestionEmpleado.Controllers
 
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return View("Index",usuarioLogin);
+                }
+
                 usuarioAdministrador = new Usuario();
                 usuarioAdministrador.Nombre = "Administrador";
                 usuarioAdministrador.Correo = "administrador@igssgt.org";
@@ -100,13 +107,5 @@ namespace GestionEmpleado.Controllers
     public class Rol
     {
         public string Nombre { get; set; }
-    }
-
-    public class Usuario
-    {
-        public string Nombre { get; set; }
-        public string Correo { get; set; }
-        public string Password { get; set; }
-        public List<Rol> Roles { get; set; }
     }
 }

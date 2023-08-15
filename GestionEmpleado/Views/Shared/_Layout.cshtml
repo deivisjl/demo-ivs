@@ -11,78 +11,30 @@
     <link href="~/css/styles.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition layout-top-nav text-sm">
+<body class="hold-transition layout-top-nav text-sm" id="main-page">
     <div class="wrapper">
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white sticky-top" 
-             style="background: url('/img/menu-background.png') repeat; display:inline-block; width:100%;">
-            <div class="container-fluid">
-                <a href="~/" class="navbar-brand">
-                    <img src="~/img/logo.png" alt="IGSS Logo" class="brand-image img-circle elevation-3">
-                    <span class="brand-text font-weight-light text-white">Gestión del empleado</span>
-                </a>
-
-                <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-                    <!-- Left navbar links -->
-                    <ul class="navbar-nav">
-                        @if (User.IsInRole("Administrador"))
-                        {
-                            <li class="nav-item">
-                                <a href="~/" class="nav-link text-white">Configuraciones</a>
-                            </li>
-                        }
-                        @if (User.IsInRole("Administrador"))
-                        {
-                            <li class="nav-item dropdown">
-                                <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle text-white">Datos del empleado</a>
-                                <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                                    <li><a href="#" class="dropdown-item">Some action </a></li>
-                                    <li><a href="#" class="dropdown-item">Some other action</a></li>
-                                </ul>
-                            </li>
-                        }
-                    </ul>
+        @{ 
+            await Html.RenderPartialAsync("_MenuTop");
+        }
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper" style="background: #e9ecef">
+                <!-- Main content -->
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="pt-2"></div>
+                        @RenderBody()
+                    </div><!-- /.container-fluid -->
                 </div>
-
-                <!-- Right navbar links -->
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                        <li class="nav-item dropdown">
-                            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle text-white"><i class="fas fa-user-circle"></i> @User.Identity.Name</a>
-                            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="right:0;left:auto">
-                                <li><a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Configuración </a></li>
-                                <li><a href="~/Login/Logout" class="dropdown-item"><i class="fas fa-power-off"></i> Cerrar sesión</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                }
+                <!-- /.content -->
             </div>
-        </nav>
-        <!-- /.navbar -->
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper" style="background: #e9ecef">
-            <!-- Main content -->
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="pt-2"></div>
-                    @RenderBody()
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
-        <!-- Main Footer -->
-        <footer class="main-footer" style="background: url('/img/murales.png') repeat; display:inline-block; width:100%;">
-            <!-- To the right -->
-            <div class="float-right d-none d-sm-inline">IGSSGT</div>
-            <!-- Default to the left -->
-            <strong>Gestión del empleado 2023</strong>
-        </footer>
+            <!-- /.content-wrapper -->
+            <!-- Main Footer -->
+            <footer class="main-footer" style="background: url('/img/murales.png') repeat; display:inline-block; width:100%;">
+                <!-- To the right -->
+                <div class="float-right d-none d-sm-inline">IGSSGT</div>
+                <!-- Default to the left -->
+                <strong>Gestión del empleado @DateTime.Now.Year</strong>
+            </footer>
     </div>
     <!-- ./wrapper -->
     <script src="~/js/jquery.min.js"></script>

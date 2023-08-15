@@ -1,0 +1,54 @@
+﻿<!-- Navbar -->
+<nav class="main-header navbar navbar-expand-md navbar-light navbar-white sticky-top"
+     style="background: url('/img/menu-background.png') repeat; display:inline-block; width:100%;">
+    <div class="container-fluid">
+        <a href="~/" class="navbar-brand">
+            <img src="~/img/logo.png" alt="IGSS Logo" class="brand-image img-circle elevation-3">
+            <span class="brand-text font-weight-light text-white">Gestión del empleado</span>
+        </a>
+
+        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                @if (User.IsInRole("Administrador"))
+                {
+                    <li class="nav-item">
+                        <a href="~/" class="nav-link text-white">Configuraciones</a>
+                    </li>
+                }
+                @if (User.IsInRole("Administrador"))
+                {
+                    <li class="nav-item dropdown">
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle text-white">Datos del empleado</a>
+                        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                            <li><a href="#" class="dropdown-item">Some action </a></li>
+                            <li><a href="#" class="dropdown-item">Some other action</a></li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <!-- Right navbar links -->
+        @if (User.Identity.IsAuthenticated)
+        {
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <li class="nav-item dropdown">
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle text-white"><i class="fas fa-user-circle"></i> @User.Identity.Name</a>
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow" style="right:0;left:auto">
+                        <li><a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Configuración </a></li>
+                        <li><a href="~/Login/Logout" class="dropdown-item"><i class="fas fa-power-off"></i> Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+        }
+    </div>
+</nav>
+<!-- /.navbar -->
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
